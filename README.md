@@ -1,6 +1,6 @@
 # playlistGen
 
-scope: website where users can enter a prompt/theme, then log into their spotify and be given a playlist generated based on it 
+scope: website where users can enter a song that they like, then log into their spotify and be given a playlist generated based on it 
 
 components needed: 
     - spotify API to build playlist
@@ -17,3 +17,6 @@ project timeline (deadline: July 31):
     - July 12 - July 19: spotify API + rough front end 
     - July 20 - July 25: front end polish 
     - July 26 - July 31: polish + deploy/host 
+
+initial thoughts: 
+    - feed prompt through openAI to get certain songs then use ML to get recs based off those songs 
