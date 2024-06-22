@@ -24,3 +24,5 @@ initial thoughts:
 
 dataset: https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks
 
+references: https://medium.com/web-mining-is688-spring-2021/content-based-movie-recommendation-system-72f122641eab
+https://medium.com/geekculture/creating-content-based-movie-recommender-with-python-7f7d1b739c63
