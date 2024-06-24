@@ -20,7 +20,7 @@ project timeline (deadline: July 31):
 
 initial thoughts: 
     - feed prompt through openAI to get certain songs then use ML to get recs based off those songs 
-
+    - markers for closeness: artists, danceability, emotional scale, popularity 
 
 dataset: https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks
 
