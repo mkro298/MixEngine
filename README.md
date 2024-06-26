@@ -11,10 +11,9 @@ tools:
     - back-end: python
 
 project timeline (deadline: July 31):
-    - June 20 to June 25: scoping + researching 
-    - June 26 to July 11: ML aspect 
-    - July 12 - July 19: spotify API + rough front end 
-    - July 20 - July 25: front end polish 
+    - June 26 to July 11: spotify API - taking recommended songs and pushing them into a playlist 
+    - July 12 - July 19: rough front end - search feature + routing 
+    - July 20 - July 25: front end polish + testing
     - July 26 - July 31: polish + deploy/host 
 
 thoughts: 
