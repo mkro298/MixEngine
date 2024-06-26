@@ -12,7 +12,8 @@ df1 = pd.read_csv("/Users/monishakrothapalli/Documents/GitHub/playlistGen/spotif
 
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
-    features = ['popularity', 'valence', 'energy', 'danceability', 'loudness']
+    features = ['popularity', 'valence', 'energy', 'danceability', 
+                'loudness', 'speechiness', 'acousticness', 'instrumentalness']
     df2 = sampled[features]
     scaler = StandardScaler()
     df2  = scaler.fit_transform(df2)
