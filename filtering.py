@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 
 df1 = pd.read_csv("/Users/monishakrothapalli/Documents/GitHub/playlistGen/spotify_data.csv")
 
-def section_data(genre):
+def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
     features = ['popularity', 'valence', 'energy', 'danceability', 'loudness']
     df2 = sampled[features]
@@ -19,11 +19,6 @@ def section_data(genre):
     sim_matrix = cosine_similarity(df2)
     return sim_matrix, sampled 
 
-def get_indices(genre):
-    _, sampled = section_data(genre)
-    indices = {song: i for i, song in enumerate(sampled['track_name'])}
-    return indices; 
-
 def get_genre(song, artist):
     genre = df1.loc[(df1['track_name'] == song) & (df1['artist_name'] == artist), 'genre'].values[0]
     return genre 
@@ -31,8 +26,8 @@ def get_genre(song, artist):
 def get_recs(song, aritst, length):
     genre = get_genre(song, aritst)
 
-    cosine_sim, sampled = section_data(genre)
-    indices = get_indices(genre)
+    cosine_sim, sampled = get_matrix(genre)
+    indices = {song: i for i, song in enumerate(sampled['track_name'])}
 
     if song not in indices:
         raise ValueError("Song '{song}' not found.")
