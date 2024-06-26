@@ -14,7 +14,7 @@ project timeline (deadline: July 31):
     - June 26 to July 11: spotify API - taking recommended songs and pushing them into a playlist 
     - July 12 - July 19: rough front end - search feature + routing 
     - July 20 - July 25: front end polish + testing
-    - July 26 - July 31: polish + deploy/host 
+    - July 26 - July 31: optimize (make recommendations more interactive + extensive) 
 
 thoughts: 
     - markers for closeness: artists, danceability, emotional scale, popularity 
