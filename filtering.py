@@ -10,7 +10,6 @@ from sklearn.preprocessing import StandardScaler
 df1 = pd.read_csv("/Users/monishakrothapalli/Documents/GitHub/playlistGen/spotify_data.csv")
 
 def get_matrix(genre):
-    #experiment with popularity - having it vs not 
     sampled = df1[df1['genre'] == genre]
     features = ['valence', 'energy', 'danceability', 
                 'loudness', 'speechiness', 'acousticness', 'instrumentalness']
