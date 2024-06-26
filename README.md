@@ -4,12 +4,11 @@ scope: website where users can enter a song that they like, then log into their 
 
 components needed: 
     - spotify API to build playlist
-    - ML to extract songs based on theme 
+    - ML to extract songs
 
 tools: 
     - front end: react 
     - back-end: python
-    - databases: SQL, AWS 
 
 project timeline (deadline: July 31):
     - June 20 to June 25: scoping + researching 
@@ -18,8 +17,7 @@ project timeline (deadline: July 31):
     - July 20 - July 25: front end polish 
     - July 26 - July 31: polish + deploy/host 
 
-initial thoughts: 
-    - feed prompt through openAI to get certain songs then use ML to get recs based off those songs 
+thoughts: 
     - markers for closeness: artists, danceability, emotional scale, popularity 
 
 dataset: https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks
