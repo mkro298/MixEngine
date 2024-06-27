@@ -57,7 +57,7 @@ def get_recs(song, artist, length, new_song_features=None):
 
     song_index = [i[0] for i in sim_scores]
 
-    return sampled['track_name'].iloc[song_index]
+    return sampled['track_id'].iloc[song_index]
 
 def main():
     tracks = get_recs('Anti-Hero', 'Taylor Swift', 20)

@@ -6,6 +6,8 @@ from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.cache_handler import FlaskSessionCacheHandler
 
+from filtering import *
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -47,13 +49,15 @@ def get_playlists():
         return redirect(auth_url)
     user_info = sp.me()
     sp.user_playlist_create(user=user_info['id'], name="play", public=False, description = " ", collaborative=False)
-    add_songs()
+    tracks = get_recs('Anti-Hero', 'Taylor Swift', 20)
+    add_songs(tracks=tracks)
     return f"Playlist created for user:{user_info['display_name']}"
 
-def add_songs():
+def add_songs(tracks):
     user_info = sp.me()
     playlists = sp.user_playlists(user_info['id'])
     pl = list(playlists['items'])[0]
+    sp.user_playlist_add_tracks(user=user_info['id'], playlist_id=pl['id'], tracks=tracks)
 
 
 @app.route('/logout')
