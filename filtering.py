@@ -23,17 +23,21 @@ def get_genre(song, artist):
     genre = df1.loc[(df1['track_name'] == song) & (df1['artist_name'] == artist), 'genre'].values[0]
     return genre 
 
+def check_in_database(song, artist):
+    return not df1[(df1['track_name'] == song) & (df1['artist_name'] == artist)].empty
+
 def get_recs(song, artist, length, new_song_features=None):
     global df1
     if new_song_features:
-        new_song_data = {
-            'track_name': song,
-            'artist_name': artist,
-            'genre': new_song_features.pop('genre')
-        }
-        new_song_data.update(new_song_features)
-        new_song_df = pd.DataFrame([new_song_data])
-        df1 = pd.concat([df1, new_song_df], ignore_index=True)
+        if (not(check_in_database(song, artist))):
+            new_song_data = {
+                'track_name': song,
+                'artist_name': artist,
+                'genre': new_song_features.pop('genre')
+            }
+            new_song_data.update(new_song_features)
+            new_song_df = pd.DataFrame([new_song_data])
+            df1 = pd.concat([df1, new_song_df], ignore_index=True)
 
     genre = get_genre(song, artist)
 
