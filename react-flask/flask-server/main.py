@@ -12,7 +12,7 @@ from filtering import *
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app)
 app.config['SECRET_KEY'] = os.urandom(64)
 
 client_id =  os.getenv("CLIENT_ID")
@@ -67,18 +67,11 @@ def add_songs(tracks):
     pl = list(playlists['items'])[0]
     sp.user_playlist_add_tracks(user=user_info['id'], playlist_id=pl['id'], tracks=tracks)
 
-@app.route('/standard')
-def standard():
-    if not sp_oauth.validate_token(cache_handler.get_cached_token()):
-        auth_url = sp_oauth.get_authorize_url()
-        return redirect(auth_url)
-    return redirect(url_for('get_playlists'))
-
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='127.0.0.1', port=5000)
 
