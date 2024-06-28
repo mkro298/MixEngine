@@ -50,12 +50,12 @@ def callback():
 @cross_origin
 @app.route('/get_playlists')
 def get_playlists():
-    print('get_play')
     param = request.args.get('param')
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
     user_info = sp.me()
+    #use id to get information about song from api and pass in 
     tracks = get_recs(param, 'Taylor Swift', 20)
     sp.user_playlist_create(user=user_info['id'], name="play", public=False, description = " ", collaborative=False)
     add_songs(tracks=tracks)

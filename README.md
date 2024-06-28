@@ -12,7 +12,7 @@ tools:
 
 project timeline (deadline: July 31): 
     - July 12 - July 19: rough front end - search feature(search through spotify database) + routing 
-    - July 20 - July 25: front end polish + testing
+    - July 20 - July 25: styling front end + testing
     - July 26 - July 31: optimize (make recommendations more interactive + extensive) 
 
 thoughts: 
