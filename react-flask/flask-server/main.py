@@ -36,18 +36,20 @@ sp = Spotify(auth_manager=sp_oauth)
 @app.route('/', methods=['GET'])
 def home(): 
     param = request.args.get('param')
-    if (not(param)):
-        return 
-    print(param)
+    if param:
+        session['param'] = param 
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
-    return redirect(url_for('get_playlists', param=param))
+    
+    stored_param = session.get('param')
+    return redirect(url_for('get_playlists', param=stored_param))
 
 @app.route('/callback')
 def callback():
     sp_oauth.get_access_token(request.args['code'])
-    return redirect(url_for('get_playlists'))
+    stored_param = session.get('param')
+    return redirect(url_for('get_playlists', param=stored_param))
 
 @cross_origin
 @app.route('/get_playlists')
