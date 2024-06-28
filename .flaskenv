@@ -1,2 +1,2 @@
-FLASK_APP=main.py 
+FLASK_APP=react-flask/flask-server/main.py 
 FLASK_ENV=development
