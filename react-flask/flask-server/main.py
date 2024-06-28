@@ -1,5 +1,6 @@
-import os 
+import os
 from flask import Flask, session, url_for, redirect, request
+from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 
 from spotipy import Spotify
@@ -11,6 +12,7 @@ from filtering import *
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 app.config['SECRET_KEY'] = os.urandom(64)
 
 client_id =  os.getenv("CLIENT_ID")
@@ -28,28 +30,34 @@ sp_oauth = SpotifyOAuth(
     show_dialog=True
 )
 
-sp = Spotify(auth_manager=sp_oauth)
+sp = Spotify(auth_manager=sp_oauth) 
 
-@app.route('/')
+@cross_origin
+@app.route('/', methods=['GET'])
 def home(): 
+    param = request.args.get('param')
+    print(param)
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
-    return redirect(url_for('get_playlists'))
+    return redirect(url_for('get_playlists', param=param))
 
 @app.route('/callback')
 def callback():
     sp_oauth.get_access_token(request.args['code'])
     return redirect(url_for('get_playlists'))
 
+@cross_origin
 @app.route('/get_playlists')
 def get_playlists():
+    print('get_play')
+    param = request.args.get('param')
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
     user_info = sp.me()
+    tracks = get_recs(param, 'Taylor Swift', 20)
     sp.user_playlist_create(user=user_info['id'], name="play", public=False, description = " ", collaborative=False)
-    tracks = get_recs('Anti-Hero', 'Taylor Swift', 20)
     add_songs(tracks=tracks)
     return f"Playlist created for user:{user_info['display_name']}"
 
@@ -59,6 +67,12 @@ def add_songs(tracks):
     pl = list(playlists['items'])[0]
     sp.user_playlist_add_tracks(user=user_info['id'], playlist_id=pl['id'], tracks=tracks)
 
+@app.route('/standard')
+def standard():
+    if not sp_oauth.validate_token(cache_handler.get_cached_token()):
+        auth_url = sp_oauth.get_authorize_url()
+        return redirect(auth_url)
+    return redirect(url_for('get_playlists'))
 
 @app.route('/logout')
 def logout():
