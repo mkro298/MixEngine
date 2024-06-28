@@ -11,7 +11,7 @@ tools:
     - back-end: python
 
 project timeline (deadline: July 31): 
-    - July 12 - July 19: rough front end - search feature(search through spotify database) + routing 
+    - July 12 - July 19: rough front end - search feature(search through spotify database) 
     - July 20 - July 25: styling front end + testing
     - July 26 - July 31: optimize (make recommendations more interactive + extensive) 
 
