@@ -36,6 +36,8 @@ sp = Spotify(auth_manager=sp_oauth)
 @app.route('/', methods=['GET'])
 def home(): 
     param = request.args.get('param')
+    if (not(param)):
+        return 
     print(param)
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
@@ -55,8 +57,11 @@ def get_playlists():
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
     user_info = sp.me()
-    #use id to get information about song from api and pass in 
-    tracks = get_recs(param, 'Taylor Swift', 20)
+    track = sp.track(track_id=param)
+    audio_features = sp.audio_features(param)
+  
+    tracks = get_recs(track['name'], track['artists'][0]['name'], 20, audio_features)
+
     sp.user_playlist_create(user=user_info['id'], name="play", public=False, description = " ", collaborative=False)
     add_songs(tracks=tracks)
     return f"Playlist created for user:{user_info['display_name']}"
