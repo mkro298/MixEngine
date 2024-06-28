@@ -10,8 +10,7 @@ tools:
     - front end: react 
     - back-end: python
 
-project timeline (deadline: July 31):
-    - June 26 to July 11: spotify API - taking recommended songs and pushing them into a playlist 
+project timeline (deadline: July 31): 
     - July 12 - July 19: rough front end - search feature(search through spotify database) + routing 
     - July 20 - July 25: front end polish + testing
     - July 26 - July 31: optimize (make recommendations more interactive + extensive) 
