@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Results.css"
+import Song from "../Song/Song"
 
 const Results = ({songs}) => {
     if (songs) {
@@ -7,8 +8,7 @@ const Results = ({songs}) => {
             <>
             <div className='results-list'>
                 {songs.map((song, id) => {
-                    console.log(song)
-                    return <div key={id}>{song.id}</div>
+                    return <Song image={song.album.images[0].url} name={song.name} artist={song.artists[0].name} id={song.id}/>
                 })}
             </div>
             </>
