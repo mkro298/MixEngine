@@ -68,9 +68,10 @@ def get_playlists():
         genre = 'pop'
     
     tracks = get_recs(track['name'], track['artists'][0]['name'], 20, param, genre, audio_features)
-    print(tracks)
 
-    sp.user_playlist_create(user=user_info['id'], name="play", public=False, description = " ", collaborative=False)
+    name = track['name']
+    playlist_name = f"Songs Based on {name}"
+    sp.user_playlist_create(user=user_info['id'], name=playlist_name, public=False, description = " ", collaborative=False)
     add_songs(tracks=tracks)
     return f"Playlist created for user:{user_info['display_name']}"
 
