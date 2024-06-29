@@ -12,7 +12,7 @@ from filtering import *
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app)
 app.config['SECRET_KEY'] = os.urandom(64)
 
 client_id =  os.getenv("CLIENT_ID")
@@ -36,28 +36,42 @@ sp = Spotify(auth_manager=sp_oauth)
 @app.route('/', methods=['GET'])
 def home(): 
     param = request.args.get('param')
-    print(param)
+    if param:
+        session['param'] = param 
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
-    return redirect(url_for('get_playlists', param=param))
+    
+    stored_param = session.get('param')
+    return redirect(url_for('get_playlists', param=stored_param))
 
 @app.route('/callback')
 def callback():
     sp_oauth.get_access_token(request.args['code'])
-    return redirect(url_for('get_playlists'))
+    stored_param = session.get('param')
+    return redirect(url_for('get_playlists', param=stored_param))
 
 @cross_origin
 @app.route('/get_playlists')
 def get_playlists():
-    print('get_play')
     param = request.args.get('param')
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
     user_info = sp.me()
-    tracks = get_recs(param, 'Taylor Swift', 20)
-    sp.user_playlist_create(user=user_info['id'], name="play", public=False, description = " ", collaborative=False)
+    track = sp.track(track_id=param)
+    audio_features = sp.audio_features(param)
+
+    if ('genres' in track['artists'][0]):
+        genre = track['artists'][0]['genres'][0]
+    else:
+        genre = 'pop'
+    
+    tracks = get_recs(track['name'], track['artists'][0]['name'], 20, param, genre, audio_features)
+
+    name = track['name']
+    playlist_name = f"Songs Based on {name}"
+    sp.user_playlist_create(user=user_info['id'], name=playlist_name, public=False, description = " ", collaborative=False)
     add_songs(tracks=tracks)
     return f"Playlist created for user:{user_info['display_name']}"
 
@@ -66,13 +80,6 @@ def add_songs(tracks):
     playlists = sp.user_playlists(user_info['id'])
     pl = list(playlists['items'])[0]
     sp.user_playlist_add_tracks(user=user_info['id'], playlist_id=pl['id'], tracks=tracks)
-
-@app.route('/standard')
-def standard():
-    if not sp_oauth.validate_token(cache_handler.get_cached_token()):
-        auth_url = sp_oauth.get_authorize_url()
-        return redirect(auth_url)
-    return redirect(url_for('get_playlists'))
 
 @app.route('/logout')
 def logout():

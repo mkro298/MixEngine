@@ -2,23 +2,13 @@
 
 scope: website where users can enter a song that they like, then log into their spotify and be given a playlist generated based on it 
 
-components needed: 
-    - spotify API to build playlist
-    - ML to extract songs
-
-tools: 
-    - front end: react 
-    - back-end: python
 
 project timeline (deadline: July 31): 
-    - July 12 - July 19: rough front end - search feature(search through spotify database) + routing 
-    - July 20 - July 25: front end polish + testing
-    - July 26 - July 31: optimize (make recommendations more interactive + extensive) 
+    - June 29 - July 5: styling front end + testing
+    - July 6 - July 13: optimize (make recommendations more interactive + extensive) 
+    - July 14 - July 31: Deploying + routing + testing 
 
 thoughts: 
     - markers for closeness: artists, danceability, emotional scale, popularity 
 
 dataset: https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks
-
-references: https://medium.com/web-mining-is688-spring-2021/content-based-movie-recommendation-system-72f122641eab
-https://medium.com/geekculture/creating-content-based-movie-recommender-with-python-7f7d1b739c63
