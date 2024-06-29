@@ -61,8 +61,14 @@ def get_playlists():
     user_info = sp.me()
     track = sp.track(track_id=param)
     audio_features = sp.audio_features(param)
-  
-    tracks = get_recs(track['name'], track['artists'][0]['name'], 20, audio_features)
+
+    if ('genres' in track['artists'][0]):
+        genre = track['artists'][0]['genres'][0]
+    else:
+        genre = 'pop'
+    
+    tracks = get_recs(track['name'], track['artists'][0]['name'], 20, param, genre, audio_features)
+    print(tracks)
 
     sp.user_playlist_create(user=user_info['id'], name="play", public=False, description = " ", collaborative=False)
     add_songs(tracks=tracks)
@@ -80,5 +86,5 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)
+    app.run(debug=True)
 
