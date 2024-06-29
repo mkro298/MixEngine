@@ -9,8 +9,12 @@ function App() {
   return (
     <>
     <div className='app'>
-    <Search setSongs={setSongs}/>
-    <Results songs={songs} setParam={setParam}/>
+      <div className='search-bar'>
+      <Search setSongs={setSongs}/>
+      </div>
+      <div className='song-results'>
+      <Results songs={songs} setParam={setParam}/>
+      </div>
     </div>
     </>
   );
