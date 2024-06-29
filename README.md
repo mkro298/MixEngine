@@ -4,9 +4,9 @@ scope: website where users can enter a song that they like, then log into their 
 
 
 project timeline (deadline: July 31): 
-    - July 12 - July 19: rough front end - search feature(search through spotify database) 
-    - July 20 - July 25: styling front end + testing
-    - July 26 - July 31: optimize (make recommendations more interactive + extensive) 
+    - June 29 - July 5: styling front end + testing
+    - July 6 - July 13: optimize (make recommendations more interactive + extensive) 
+    - July 14 - July 31: Deploying + routing + testing 
 
 thoughts: 
     - markers for closeness: artists, danceability, emotional scale, popularity 
