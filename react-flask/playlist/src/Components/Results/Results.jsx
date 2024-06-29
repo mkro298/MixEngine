@@ -33,7 +33,7 @@ const Results = ({songs}) => {
                 <div className='overlay' onClick={handleOverlayClick}>
                 <img className='enlarged-image' src={enlarged} alt="Enlarged Art" />
                 <a href={`http://127.0.0.1:5000/?param=${param}`}>sign into spotify</a>
-            </div>
+                </div>
             )}
             </>
           )

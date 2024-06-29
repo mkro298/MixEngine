@@ -1,4 +1,40 @@
-.result img {
-    height: 200px;
-    width: auto;
-}
+.result {
+    display: flex;
+    align-items: center;
+    background-color: #9f9f9f;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin: 10px 0;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    outline: none;
+  }
+  
+  .result:hover {
+    background-color: #dcdbdb;
+  }
+  
+  .result img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+  
+  .blurb {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blurb p {
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .blurb p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
