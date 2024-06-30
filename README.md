@@ -19,8 +19,8 @@ npm start
 ![img/home.png](https://github.com/mkro298/playlistGen/blob/main/img/home.png?raw=true)
 
 
-!(https://github.com/mkro298/playlistGen/blob/main/img/search.png?raw=true)
+![img/search.png](https://github.com/mkro298/playlistGen/blob/main/img/search.png?raw=true)
 
-!(https://github.com/mkro298/playlistGen/blob/main/img/auth.png?raw=true)
+![img/auth.png](https://github.com/mkro298/playlistGen/blob/main/img/auth.png?raw=true)
 
-!(https://github.com/mkro298/playlistGen/blob/main/img/play.png?raw=true)
+![img/play.png](https://github.com/mkro298/playlistGen/blob/main/img/play.png?raw=true)
