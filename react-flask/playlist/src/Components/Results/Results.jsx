@@ -32,8 +32,10 @@ const Results = ({songs}) => {
             {enlarged && (
                 <div className='overlay' onClick={handleOverlayClick}>
                 <img className='enlarged-image' src={enlarged} alt="Enlarged Art" />
-                <a href={`http://127.0.0.1:5000/?param=${param}`}>sign into spotify</a>
-            </div>
+                <button className='spotify-button' onClick={() => window.location.href = `http://127.0.0.1:5000/?param=${param}`}>
+                Make Playlist
+                </button>
+                </div>
             )}
             </>
           )

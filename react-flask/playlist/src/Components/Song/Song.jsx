@@ -4,7 +4,7 @@ import "./Song.css"
 const Song = ({image, name, artist, id}) => {
   return (
     <div className='result'>
-        <img src={image}></img>
+        <img src={image} draggable='false'></img>
         <div className='blurb'>
             <p>{name}</p>
             <p>{artist}</p>

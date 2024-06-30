@@ -1,19 +1,24 @@
 import './App.css';
-import React, {useState} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Search, Results } from './Components/index';
+import React from 'react';
+import {Home} from './Pages'; 
+import {
+  BrowserRouter as Router, 
+  Routes, 
+  Route, 
+} from "react-router-dom"; 
+
 
 function App() {
-  const [songs, setSongs] = useState([]); 
-  const [param, setParam] = useState(""); 
-  return (
-    <>
-    <div className='app'>
-    <Search setSongs={setSongs}/>
-    <Results songs={songs} setParam={setParam}/>
-    </div>
-    </>
-  );
+
+return (
+    <Router>
+        <Routes>
+        <Route path="/" element={<Home />} />
+        </Routes>
+    </Router>
+);
+
 }
+
 
 export default App;

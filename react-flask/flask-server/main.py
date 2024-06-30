@@ -43,18 +43,17 @@ def home():
         return redirect(auth_url)
     
     stored_param = session.get('param')
-    return redirect(url_for('get_playlists', param=stored_param))
+    return get_playlists(stored_param)
+     
 
 @app.route('/callback')
 def callback():
     sp_oauth.get_access_token(request.args['code'])
     stored_param = session.get('param')
-    return redirect(url_for('get_playlists', param=stored_param))
+    return get_playlists(stored_param)
+    
 
-@cross_origin
-@app.route('/get_playlists')
-def get_playlists():
-    param = request.args.get('param')
+def get_playlists(param):
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
@@ -73,7 +72,7 @@ def get_playlists():
     playlist_name = f"Songs Based on {name}"
     sp.user_playlist_create(user=user_info['id'], name=playlist_name, public=False, description = " ", collaborative=False)
     add_songs(tracks=tracks)
-    return f"Playlist created for user:{user_info['display_name']}"
+    return f"Playlist created for user {user_info['display_name']} has now been added to your profile"
 
 def add_songs(tracks):
     user_info = sp.me()
