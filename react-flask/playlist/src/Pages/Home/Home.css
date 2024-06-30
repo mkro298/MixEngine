@@ -1,0 +1,29 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    height: 100vh;
+    background-color: #383838;
+  }
+
+  .app h5 {
+    text-align: center;
+    color: aliceblue;
+  }
+  
+  .search-bar {
+    width: 82%; 
+    margin: 10px 0;
+    position: fixed; 
+  }
+  
+  .song-results {
+    width: 100%;
+    margin-top: 90px; 
+    overflow-y: auto; 
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
