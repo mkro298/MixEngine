@@ -1,4 +1,4 @@
-# playlistGen
+# MixEngine
 
 A website where users can enter a song that they like and be given a playlist generated with songs similar to it. 
 
