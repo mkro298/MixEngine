@@ -16,11 +16,15 @@ npm start
 ```
 
 ## Site Demo  
+
+Home Page: 
 ![img/home.png](https://github.com/mkro298/playlistGen/blob/main/img/home.png?raw=true)
 
-
+Search Function: 
 ![img/search.png](https://github.com/mkro298/playlistGen/blob/main/img/search.png?raw=true)
 
+Getting Access: 
 ![img/auth.png](https://github.com/mkro298/playlistGen/blob/main/img/auth.png?raw=true)
 
+Resulting Playlist: 
 ![img/play.png](https://github.com/mkro298/playlistGen/blob/main/img/play.png?raw=true)
