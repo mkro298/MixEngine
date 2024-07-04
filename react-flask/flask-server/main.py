@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = os.urandom(64)
 
 client_id =  os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
-redirect_url = 'http://127.0.0.1:5000/callback'
+redirect_url = 'https://flaskengine-156a7f257487.herokuapp.com/callback'
 scope = 'playlist-read-private playlist-modify-private'
 
 cache_handler = FlaskSessionCacheHandler(session)
