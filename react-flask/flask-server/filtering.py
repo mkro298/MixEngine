@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
-df1 = pd.read_csv("../../spotify_data.csv")
+df1 = pd.read_csv("spotify_data.csv")
 
 print(df1.columns)  # Check columns present in df1
 print(df1.head())
