@@ -23,15 +23,16 @@ def get_matrix(genre):
     return sim_matrix, sampled 
 
 def get_genre(song, artist):
+    global df1
     genre = df1.loc[(df1['track_name'] == song) & (df1['artist_name'] == artist), 'genre'].values[0]
     return genre 
 
 def check_in_database(song, artist):
+    global df1
     return not df1[(df1['track_name'] == song) & (df1['artist_name'] == artist)].empty
 
 def get_recs(song, artist, length, id = None, genre=None, new_song_features=None):
     global df1
-    df1 = pd.read_csv("spotify_data.csv")
     if new_song_features:
         if (not(check_in_database(song, artist))):
             new_song_data = {
