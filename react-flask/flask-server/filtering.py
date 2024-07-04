@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
-df1 = pd.read_csv("/Users/monishakrothapalli/Documents/GitHub/playlistGen/spotify_data.csv")
+df1 = pd.read_csv("spotify_data.csv")
 
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
