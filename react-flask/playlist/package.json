@@ -2,7 +2,7 @@
   "name": "playlist",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://mixengine-9e2430800a72.herokuapp.com/",
+  "proxy": "https://flaskengine-156a7f257487.herokuapp.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

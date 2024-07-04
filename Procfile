@@ -1,1 +1,1 @@
-web: gunicorn react-flask.flask-server.main:app 
+web: python react-flask/flask-server/main.py
