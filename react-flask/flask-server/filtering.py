@@ -9,6 +9,9 @@ from sklearn.preprocessing import StandardScaler
 
 df1 = pd.read_csv("spotify_data.csv")
 
+print(df1.columns)  # Check columns present in df1
+print(df1.head())
+
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
     features = ['valence', 'energy', 'danceability', 
