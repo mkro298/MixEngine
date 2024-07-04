@@ -4,7 +4,6 @@ import "./Home.css"
 
 const Home = () => {
     const [songs, setSongs] = useState([]); 
-    const [param, setParam] = useState(""); 
     return (
       <>
       <div className='app'>
@@ -13,7 +12,7 @@ const Home = () => {
         <Search setSongs={setSongs}/>
         </div>
         <div className='song-results'>
-        <Results songs={songs} setParam={setParam}/>
+        <Results songs={songs}/>
         </div>
       </div>
       </>
