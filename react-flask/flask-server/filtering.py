@@ -7,10 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
-df1 = pd.read_csv("spotify_data.csv")
-
-print(df1.columns)  # Check columns present in df1
-print(df1.head())
+df1 = pd.read_csv("https://media.githubusercontent.com/media/mkro298/MixEngine/main/spotify_data.csv")
 
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
@@ -23,12 +20,10 @@ def get_matrix(genre):
     return sim_matrix, sampled 
 
 def get_genre(song, artist):
-    global df1
     genre = df1.loc[(df1['track_name'] == song) & (df1['artist_name'] == artist), 'genre'].values[0]
     return genre 
 
 def check_in_database(song, artist):
-    global df1
     return not df1[(df1['track_name'] == song) & (df1['artist_name'] == artist)].empty
 
 def get_recs(song, artist, length, id = None, genre=None, new_song_features=None):
