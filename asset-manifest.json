@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MixEngine/static/css/main.bda51442.css",
+    "main.js": "/MixEngine/static/js/main.907859e6.js",
+    "static/js/453.2284d4dc.chunk.js": "/MixEngine/static/js/453.2284d4dc.chunk.js",
+    "index.html": "/MixEngine/index.html",
+    "main.bda51442.css.map": "/MixEngine/static/css/main.bda51442.css.map",
+    "main.907859e6.js.map": "/MixEngine/static/js/main.907859e6.js.map",
+    "453.2284d4dc.chunk.js.map": "/MixEngine/static/js/453.2284d4dc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bda51442.css",
+    "static/js/main.907859e6.js"
+  ]
+}
