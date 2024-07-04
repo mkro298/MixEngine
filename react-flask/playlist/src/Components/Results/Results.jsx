@@ -32,7 +32,7 @@ const Results = ({songs}) => {
             {enlarged && (
                 <div className='overlay' onClick={handleOverlayClick}>
                 <img className='enlarged-image' src={enlarged} alt="Enlarged Art" />
-                <button className='spotify-button' onClick={() => window.location.href = `http://127.0.0.1:5000/?param=${param}`}>
+                <button className='spotify-button' onClick={() => window.location.href = `https://mixengine-9e2430800a72.herokuapp.com/?param=${param}`}>
                 Make Playlist
                 </button>
                 </div>
