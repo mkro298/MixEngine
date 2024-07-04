@@ -31,6 +31,7 @@ def check_in_database(song, artist):
 
 def get_recs(song, artist, length, id = None, genre=None, new_song_features=None):
     global df1
+    df1 = pd.read_csv("spotify_data.csv")
     if new_song_features:
         if (not(check_in_database(song, artist))):
             new_song_data = {
