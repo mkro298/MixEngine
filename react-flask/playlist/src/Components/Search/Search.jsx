@@ -24,6 +24,8 @@ const Search = ({setSongs}) => {
     //search function 
     async function search() {
         console.log("Search for " + input)
+        console.log(CLIENT_ID); 
+        console.log(CLIENT_SECRET); 
     
         //get top 20 tracks based off searched title 
         var trackParam = {
