@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import "./Search.css"; 
 import {FaSearch} from "react-icons/fa"; 
 
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const CLIENT_ID = process.env.CLIENT_ID; 
+const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET; 
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID; 
+
 
 const Search = ({setSongs}) => {
     const [input, setInput] = useState(""); 
@@ -24,8 +25,6 @@ const Search = ({setSongs}) => {
     //search function 
     async function search() {
         console.log("Search for " + input)
-        console.log(CLIENT_ID); 
-        console.log(CLIENT_SECRET); 
     
         //get top 20 tracks based off searched title 
         var trackParam = {
