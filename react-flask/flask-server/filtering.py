@@ -1,7 +1,5 @@
 import numpy as np
 import pandas as pd 
-import pandasql as ps 
-import psycopg2
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from ast import literal_eval
