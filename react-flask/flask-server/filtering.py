@@ -8,6 +8,7 @@ columns = ['track_name', 'artist_name', 'track_id', 'genre', 'valence', 'energy'
 df1 = pd.read_csv(url, usecols=columns)
 df1 = df1.drop_duplicates()
 
+sim_matrix_cache = {}
 
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
@@ -16,6 +17,7 @@ def get_matrix(genre):
     scaler = StandardScaler()
     df2  = scaler.fit_transform(df2)
     sim_matrix = cosine_similarity(df2)
+    sim_matrix_cache[genre] = (sim_matrix, sampled)
     return sim_matrix, sampled 
 
 def get_genre(song, artist):
@@ -55,5 +57,7 @@ def get_recs(song, artist, length, id = None, genre=None, new_song_features=None
     sim_scores = sim_scores[0:length]
 
     song_index = [i[0] for i in sim_scores]
+
+    del sim_matrix_cache[genre]
 
     return sampled['track_id'].iloc[song_index]
