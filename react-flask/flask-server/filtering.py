@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 url = "https://media.githubusercontent.com/media/mkro298/MixEngine/main/spotify_data.csv"
 columns = ['track_name', 'artist_name', 'track_id', 'genre', 'valence', 'energy', 'danceability', 'acousticness', 'instrumentalness']
 df1 = pd.read_csv(url, usecols=columns)
+df1 = df1.drop_duplicates()
 
 
 def get_matrix(genre):
