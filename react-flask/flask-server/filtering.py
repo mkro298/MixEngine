@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd 
+import pandasql as ps 
+import psycopg2
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from ast import literal_eval
@@ -7,7 +9,13 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
-df1 = pd.read_csv("https://media.githubusercontent.com/media/mkro298/MixEngine/main/spotify_data.csv")
+url = "https://media.githubusercontent.com/media/mkro298/MixEngine/main/spotify_data.csv"
+chunk_size = 100000
+chunks = pd.read_csv(url, chunksize=chunk_size)
+df1 = pd.DataFrame()
+for chunk in chunks:
+    df1 = pd.concat([df1, chunk], ignore_index=True)
+
 
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
