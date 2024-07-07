@@ -4,11 +4,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
 url = "https://media.githubusercontent.com/media/mkro298/MixEngine/main/spotify_data.csv"
-chunk_size = 100000
-chunks = pd.read_csv(url, chunksize=chunk_size)
-df1 = pd.DataFrame()
-for chunk in chunks:
-    df1 = pd.concat([df1, chunk], ignore_index=True)
+columns = ['track_name', 'artist_name', 'track_id', 'genre', 'valence', 'energy', 'danceability', 'acousticness', 'instrumentalness']
+df1 = pd.read_csv(url, usecols=columns)
 
 
 def get_matrix(genre):
