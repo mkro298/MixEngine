@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd 
+import gc
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
@@ -17,7 +18,7 @@ def get_matrix(genre):
     scaler = StandardScaler()
     df2  = scaler.fit_transform(df2)
     sim_matrix = cosine_similarity(df2)
-    sim_matrix_cache[genre] = (sim_matrix, sampled)
+    sim_matrix_cache[0] = (sim_matrix, sampled)
     return sim_matrix, sampled 
 
 def get_genre(song, artist):
@@ -58,6 +59,7 @@ def get_recs(song, artist, length, id = None, genre=None, new_song_features=None
 
     song_index = [i[0] for i in sim_scores]
 
-    del sim_matrix_cache[genre]
+    del sim_matrix_cache[0]
+    gc.collect()
 
     return sampled['track_id'].iloc[song_index]
