@@ -4,14 +4,14 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
 url = "https://media.githubusercontent.com/media/mkro298/MixEngine/main/spotify_data.csv"
-columns = ['track_name', 'artist_name', 'track_id', 'genre', 'valence', 'energy', 'danceability', 'acousticness', 'instrumentalness']
+columns = ['track_name', 'artist_name', 'track_id', 'genre', 'valence', 'energy', 'danceability', 'loudness', 'instrumentalness']
 df1 = pd.read_csv(url, usecols=columns)
 df1 = df1.drop_duplicates()
 
 
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
-    features = ['valence', 'energy', 'danceability', 'acousticness', 'instrumentalness']
+    features = ['valence', 'energy', 'danceability', 'loudness', 'instrumentalness']
     df2 = sampled[features]
     scaler = StandardScaler()
     df2  = scaler.fit_transform(df2)
