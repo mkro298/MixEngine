@@ -1,9 +1,5 @@
 import numpy as np
 import pandas as pd 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import linear_kernel
-from ast import literal_eval
-from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 
@@ -17,8 +13,7 @@ for chunk in chunks:
 
 def get_matrix(genre):
     sampled = df1[df1['genre'] == genre]
-    features = ['valence', 'energy', 'danceability', 
-                'loudness', 'speechiness', 'acousticness', 'instrumentalness']
+    features = ['valence', 'energy', 'danceability', 'acousticness', 'instrumentalness']
     df2 = sampled[features]
     scaler = StandardScaler()
     df2  = scaler.fit_transform(df2)
@@ -45,10 +40,8 @@ def get_recs(song, artist, length, id = None, genre=None, new_song_features=None
             new_song_data.update(new_song_features[0])
             new_song_df = pd.DataFrame([new_song_data])
             df1 = pd.concat([df1, new_song_df], ignore_index=True)
-
-
+            
     genre = get_genre(song, artist)
-
     cosine_sim, sampled = get_matrix(genre)
     indices = {song: i for i, song in enumerate(sampled['track_name'])}
 
@@ -66,11 +59,3 @@ def get_recs(song, artist, length, id = None, genre=None, new_song_features=None
     song_index = [i[0] for i in sim_scores]
 
     return sampled['track_id'].iloc[song_index]
-
-def main():
-    tracks = get_recs('Anti-Hero', 'Taylor Swift', 20)
-    for song in tracks:
-        print(song)
-
-if __name__ == "__main__":
-    main()
