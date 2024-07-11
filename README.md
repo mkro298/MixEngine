@@ -5,6 +5,8 @@ A website where users can enter a song that they like and be given a playlist ge
 ## Site Access 
 https://mixengine.netlify.app/
 
+*As the site is still in development mode on Spotify it will only work for users who are explicitly given access* 
+
 ## Site Demo  
 
 Home Page: 
