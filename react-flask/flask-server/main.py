@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = os.urandom(64)
 client_id =  os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
 redirect_url = 'https://flaskengine-156a7f257487.herokuapp.com/callback'
-scope = 'playlist-read-private playlist-modify-private'
+scope = 'playlist-read-private playlist-modify-private user-read-private user-read-email'
 
 cache_handler = FlaskSessionCacheHandler(session)
 sp_oauth = SpotifyOAuth(
