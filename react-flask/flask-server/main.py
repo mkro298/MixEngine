@@ -70,15 +70,15 @@ def get_playlists(param):
 
     name = track['name']
     playlist_name = f"Songs Based on {name}"
-    sp.user_playlist_create(user=user_info['id'], name=playlist_name, public=False, description = " ", collaborative=False)
-    add_songs(tracks=tracks)
+    new_play = sp.user_playlist_create(user=user_info['id'], name=playlist_name, public=False, description = " ", collaborative=False)
+    playlist_id = new_play['id']
+    add_songs(playlist_id, tracks=tracks)
     return f"Playlist created for user {user_info['display_name']} has now been added to your profile"
 
-def add_songs(tracks):
+def add_songs(playlist_id, tracks):
     user_info = sp.me()
     playlists = sp.user_playlists(user_info['id'])
-    pl = list(playlists['items'])[0]
-    sp.user_playlist_add_tracks(user=user_info['id'], playlist_id=pl['id'], tracks=tracks)
+    sp.user_playlist_add_tracks(user=user_info['id'], playlist_id=playlist_id, tracks=tracks)
 
 @app.route('/logout')
 def logout():
