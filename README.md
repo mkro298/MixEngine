@@ -7,6 +7,10 @@ https://mixengine.netlify.app/
 
 *As the site is still in development mode on Spotify it will only work for users who are explicitly given access* 
 
+## Set-up through an IDE 
+
+Run the following commands to set up all dependencies 
+
 ## Site Demo  
 
 Home Page: 
